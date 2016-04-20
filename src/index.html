@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--[if IE 9]>          <html lang="zh" class="root no-js ie9">   <![endif]-->
+<!--[if gt IE 9]><!-->  <html lang="zh" class="root no-js">       <!--<![endif]-->
+<head>
+  <title>DEMO</title>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="qiuzhonglei@hujiang.com">
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
+  <meta name="full-screen" content="yes">
+  <meta name="format-detection" content="telephone=no;">
+  <meta name="format-detection" content="address=no;email=no;">
+  <meta http-equiv="cleartype" content="on">
+  <base href="/">
+
+
+  <% if (webpackConfig.metadata.env.DEV) { %>
+  <script src="http://<%= webpackConfig.metadata.host %>:<%= webpackConfig.metadata.port %>/webpack-dev-server.js"></script>
+  <% } %>
+
+
+  <script src="<%= htmlWebpackPlugin.files.chunks.head.entry %>"></script>
+
+  <% for (var i in htmlWebpackPlugin.files.css) { %>
+  <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.css[i] %>">
+  <% } %>
+
+  <script>
+  var G = {
+    hashbang: true,
+    signOutBase: 'https://qapass.hujiang.com/logout/?url=',
+    syncHost: "https://qapass.",
+    syncRemeberDays: 14,
+    syncDomains: eval('(["hujiang.com","hjclass.com","hjenglish.com","cctalk.com","yeshj.com"])')
+  };
+  </script>
+</head>
+<body>
+
+  <div as-app>Loading...</div>
+
+
+  <script src="<%= htmlWebpackPlugin.files.chunks.polyfill.entry %>"></script>
+  <script type="text/javascript">
+  Promise.prototype.finally = function (callback) {
+    var P = this.constructor;
+    return this.then(
+      function (value) { return P.resolve(callback()).then(function () { return value; })},
+      function (reason) { return P.resolve(callback()).then(function () { throw reason; })}
+    );
+  };
+  </script>
+  <script src="<%= htmlWebpackPlugin.files.chunks.vendor.entry %>"></script>
+  <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
+
+</body>
+</html>
+
