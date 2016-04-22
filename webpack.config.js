@@ -3,6 +3,7 @@ var path = require('path');
 var fs = require('fs-extra');
 var _ = require('lodash');
 
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CompressionPlugin = require('compression-webpack-plugin');
 var WebpackMd5Hash = require('webpack-md5-hash');
@@ -109,6 +110,7 @@ module.exports = function (userConfig) {
       new WebpackMd5Hash(),
       new webpack.NoErrorsPlugin(),
       new webpack.optimize.DedupePlugin(),
+      new CopyWebpackPlugin([{from: path.join(srcDir, 'assets'), to: 'assets'}]),
       new webpack.optimize.UglifyJsPlugin({
         beautify: false,
         comments: false,

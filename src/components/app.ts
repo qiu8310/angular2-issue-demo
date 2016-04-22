@@ -5,6 +5,7 @@ let template = `
   <ol class="problems">
     <li><a [routerLink]="['FirstBackBroken']">First back not wrok after refresh page</a></li>
     <li><a [routerLink]="['URLQueryDisappear']">Custom url query paramater disappear</a></li>
+    <li><a [routerLink]="['UpdateFromIframe']">update from iframe</a></li>
   </ol>
   <hr>
 
@@ -25,6 +26,7 @@ let style = `
 import {Welcome} from './Welcome';
 import {FirstBackBroken} from './FirstBackBroken';
 import {URLQueryDisappear} from './URLQueryDisappear';
+import {UpdateFromIframe} from './UpdateFromIframe';
 
 
 @Component({
@@ -49,6 +51,11 @@ import {URLQueryDisappear} from './URLQueryDisappear';
     path: '/url/query/disappear',
     name: 'URLQueryDisappear',
     component: URLQueryDisappear
+  },
+  {
+    path: '/update/from/iframe',
+    name: 'UpdateFromIframe',
+    component: UpdateFromIframe
   }
 ])
 export class App {
