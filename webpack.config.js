@@ -29,7 +29,7 @@ module.exports = function (userConfig) {
   // 常量
   var rootDir = __dirname;
   var srcDir = path.join(rootDir, 'src');
-  var distDir = path.join(rootDir, 'dist');
+  var distDir = path.join(rootDir, 'dist', 'angular2-issue-demo');
 
   var tsConfig = {
     compilerOptions: {
@@ -57,7 +57,7 @@ module.exports = function (userConfig) {
     };
     config.output = {
       path: distDir,
-      publicPath: env.BUILD ? '/' : 'http://' + metadata.host + ':' + metadata.port + '/',
+      publicPath: env.BUILD ? './' : 'http://' + metadata.host + ':' + metadata.port + '/',
       filename: env.BUILD ? '[name].js' : '[name].bundle.js',
       chunkFilename: env.BUILD ? '[name].js' : '[name].chunk.js'
     };

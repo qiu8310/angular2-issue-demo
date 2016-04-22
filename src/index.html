@@ -15,7 +15,9 @@
   <meta name="format-detection" content="telephone=no;">
   <meta name="format-detection" content="address=no;email=no;">
   <meta http-equiv="cleartype" content="on">
-  <base href="/">
+  <% if (webpackConfig.metadata.env.BUILD) { %>
+  <base href="/angular2-issue-demo/">
+  <% } %>
 
 
   <% if (webpackConfig.metadata.env.DEV) { %>
@@ -43,19 +45,10 @@
 
   <div as-app>Loading...</div>
 
-
   <script src="<%= htmlWebpackPlugin.files.chunks.polyfill.entry %>"></script>
-  <script type="text/javascript">
-  Promise.prototype.finally = function (callback) {
-    var P = this.constructor;
-    return this.then(
-      function (value) { return P.resolve(callback()).then(function () { return value; })},
-      function (reason) { return P.resolve(callback()).then(function () { throw reason; })}
-    );
-  };
-  </script>
   <script src="<%= htmlWebpackPlugin.files.chunks.vendor.entry %>"></script>
   <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
+
 
 </body>
 </html>

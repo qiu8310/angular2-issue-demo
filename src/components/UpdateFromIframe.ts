@@ -33,6 +33,6 @@ export class UpdateFromIframe {
     }
 
     document.body.appendChild(iframe);
-    iframe.src = '/assets/iframe.html?callback=' + callback;
+    iframe.src = './assets/iframe.html?callback=' + callback;
   }
 }
