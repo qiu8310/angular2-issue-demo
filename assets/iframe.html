@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+
+<script type="text/javascript">
+  var callback = location.search.split('=')[1];
+  window.parent.window[callback]('I am in the iframe, time: ' + new Date);
+</script>
+</body>
+</html>
